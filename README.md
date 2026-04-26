@@ -1,224 +1,85 @@
-# México Law as Code — Fiscal
-
-Repositorio abierto para **versionar, auditar y analizar** normativa fiscal mexicana bajo el enfoque **Law as Code**.
-
----
-
-## Descripción
-
-Este repositorio organiza leyes fiscales mexicanas en archivos de texto estructurados (Markdown) para tratarlas como código fuente:
-
-- Cada ley vive en una ruta predecible.
-- Cada reforma se refleja como un commit trazable.
-- Cada diferencia normativa se analiza con herramientas de diff.
-- Cada versión puede integrarse en pipelines de software fiscal y sistemas de IA.
-
-### ¿Qué problema resuelve?
-
-En la práctica fiscal, es común perder trazabilidad de cambios entre reformas, criterios o reglas misceláneas. Este repositorio permite:
-
-- Conservar historial normativo de forma transparente.
-- Comparar texto anterior vs. texto reformado con precisión.
-- Reducir ambigüedad al construir lógica de negocio fiscal.
-- Habilitar fuentes estructuradas para búsqueda semántica y automatización.
-
-### ¿Por qué es útil?
-
-- **Desarrolladores:** base estable para motores de cálculo, validaciones y reglas tributarias.
-- **Fiscalistas:** seguimiento claro de modificaciones por fecha y fuente.
-- **Sistemas de IA:** insumo limpio para RAG, agentes legales y extracción de conocimiento.
-
----
-
-## Principios del proyecto
-
-1. **Las leyes como código**
-   - La norma se modela como artefacto versionable.
-2. **Transparencia y trazabilidad**
-   - Cada ajuste debe quedar asociado a un commit y referencia oficial.
-3. **Versionamiento claro**
-   - Reformas, correcciones y mejoras de estructura se distinguen por tipo de cambio.
-4. **Fuente oficial (DOF)**
-   - El Diario Oficial de la Federación (DOF) es la referencia primaria obligatoria.
-
----
-
-## Estructura del repositorio
-
-La organización sigue la jerarquía normativa mexicana:
-
-1. **Constitución Política de los Estados Unidos Mexicanos**
-   - `constitucion/`
-2. **Tratados Internacionales**
-   - `tratados-internacionales/`
-3. **Leyes Federales**
-   - `leyes-federales/`
-4. **Reglamentos**
-   - `reglamentos/`
-5. **Resolución Miscelánea Fiscal**
-   - `resolucion-miscelanea-fiscal/`
-6. **Criterios del SAT (opcional)**
-   - `criterios-sat/`
-7. **Otros (tesis, jurisprudencia - opcional)**
-   - Puede agregarse posteriormente (`otros/`)
-
-### Árbol base
-
-```text
-/constitucion/
-/tratados-internacionales/
-/leyes-federales/
-    /codigo-fiscal-de-la-federacion/
-    /ley-del-isr/
-    /ley-del-iva/
-/reglamentos/
-/resolucion-miscelanea-fiscal/
-/criterios-sat/
-```
-
----
-
-## Organización de leyes
-
-- Una carpeta por ordenamiento jurídico.
-- Dentro de cada carpeta:
-  - Opción A: archivo único principal + historial vía commits.
-  - Opción B: versiones fechadas (si el proyecto requiere snapshots).
-- Recomendación inicial: **archivo único por ley** y uso intensivo de historial Git para diffs.
-
-Ejemplo:
-
-```text
-leyes-federales/
-  ley-del-isr/
-    ley-del-isr.md
-  codigo-fiscal-de-la-federacion/
-    codigo-fiscal-de-la-federacion.md
-```
-
----
-
-## Convenciones de nombres
-
-Usar minúsculas, guiones medios y nombres descriptivos:
-
-- `ley-del-isr.md`
-- `codigo-fiscal-de-la-federacion.md`
-- `ley-del-iva.md`
-
-Reglas sugeridas:
-
-- Sin acentos ni caracteres especiales en nombres de archivo.
-- Nombres estables para facilitar automatización.
-- Una ley = un nombre canónico.
-
----
-
-## Convenciones de commits
-
-Formato recomendado (Conventional Commits adaptado):
-
-- `feat: publicación inicial Ley del ISR`
-- `reform: artículo 27 actualizado (DOF 2025-01-01)`
-- `fix: corrección de formato artículo 5`
-- `docs: mejora de metadata de fuente DOF`
-
-Sugerencias:
-
-- Incluir fecha DOF cuando aplique.
-- Separar cambios de forma (`fix`, `docs`) de cambios normativos (`reform`).
-- Evitar commits masivos con múltiples leyes sin relación.
-
----
-
-## Plantilla recomendada para archivos Markdown
-
-```markdown
-# Ley del Impuesto sobre la Renta
-
-## Metadata
-- Nombre oficial: Ley del Impuesto sobre la Renta
-- Clave corta: LISR
-- Última reforma considerada: 2025-01-01
-- Fuente oficial: Diario Oficial de la Federación (DOF)
-- URL fuente: https://www.dof.gob.mx/
-- Estatus: Vigente
-
-## Texto normativo
-
-### Artículo 1
-Texto del artículo...
-
-### Artículo 2
-Texto del artículo...
-
-## Historial de cambios del repositorio
-- 2026-04-21: Versión inicial estructurada en markdown.
-```
-
----
-
-## Uso con IA
-
-Este repositorio está diseñado para integrarse con sistemas inteligentes:
-
-### 1) RAG (Retrieval-Augmented Generation)
-
-- Indexar archivos `.md` por ley, capítulo y artículo.
-- Recuperar contexto normativo exacto antes de generar respuestas.
-- Citar artículo y fecha de reforma en respuestas automatizadas.
-
-### 2) Agentes legales
-
-- Definir herramientas que consulten artículos específicos.
-- Comparar redacciones entre commits para explicar impactos normativos.
-- Automatizar flujos de revisión legal/técnica para software fiscal.
-
-### 3) Automatización fiscal
-
-- Alimentar motores de reglas con texto versionado.
-- Ejecutar validaciones de cumplimiento con referencia normativa.
-- Monitorear cambios regulatorios para alertas y actualización de sistemas.
-
----
-
-## Buenas prácticas de mantenimiento
-
-### Actualización continua
-
-- Revisar publicaciones del DOF en ciclos definidos (diario/semanal).
-- Registrar cada reforma relevante como commit independiente.
-- Mantener metadata de fecha de última reforma por archivo.
-
-### Contribución
-
-1. Crear rama descriptiva (`reform/lisr-articulo-27-2025-01-01`).
-2. Actualizar texto y metadata en el archivo correspondiente.
-3. Incluir referencia DOF en el commit o PR.
-4. Abrir PR con resumen del cambio normativo y alcance técnico.
-
-### Validación contra DOF
-
-- Confirmar coincidencia literal del texto cuando sea posible.
-- Verificar fecha de publicación y entrada en vigor.
-- Documentar notas cuando existan artículos transitorios relevantes.
-
-### Calidad documental
-
-- Mantener encabezados consistentes (`#`, `##`, `### Artículo X`).
-- Evitar formatos ambiguos.
-- Preferir cambios pequeños y auditables.
-
----
-
-## Disclaimer legal
-
-- Este repositorio es un recurso técnico-documental y **no sustituye asesoría legal, fiscal o profesional**.
-- La **fuente oficial y vinculante** de la normatividad es el **Diario Oficial de la Federación (DOF)** y demás fuentes oficiales aplicables.
-- Cualquier uso en producción debe incluir validación jurídica especializada.
-
----
-
-## Licencia y uso
-
-Se recomienda incorporar una licencia open source (por ejemplo, MIT o Apache-2.0) y lineamientos de contribución (`CONTRIBUTING.md`) en siguientes iteraciones.
+# mexico-law-as-code
+
+![Licencia: MIT](https://img.shields.io/badge/licencia-MIT-green.svg) ![Contribuciones bienvenidas](https://img.shields.io/badge/contribuciones-bienvenidas-brightgreen.svg)
+
+## ¿Qué es esto?
+
+Repositorio open source que versiona la normativa fiscal y financiera de México en formato Markdown estructurado, para ser consumible por sistemas RAG, motores de cálculo fiscal, agentes de IA, y cualquier herramienta que requiera normativa legal como código versionable.
+
+## Casos de uso
+
+- RAG / LLMs: alimentar modelos de lenguaje con normativa actualizada y versionada
+- Motores de cálculo: tablas de tasas ISR, IVA, IEPS referenciadas como código
+- Alertas de reforma: git diff para detectar cambios normativos automáticamente
+- Auditoría: historial completo de cambios en cada artículo vía git blame
+- Investigación legal: búsqueda full-text y referencias cruzadas entre leyes
+- EdTech: material estructurado para plataformas de educación fiscal
+
+## Jerarquía normativa de México
+
+- Nivel 1: Constitución Política (CPEUM) — Base constitucional
+- Nivel 2: Tratados Internacionales — CDIs, TIEAs, BEPS-OCDE  
+- Nivel 3: Leyes Federales — CFF, LISR, LIVA, LIEPS y demás
+- Nivel 4: Reglamentos — Reglamentos de cada ley principal
+- Nivel 5: Resolución Miscelánea Fiscal — RMF anual + modificaciones + anexos
+- Nivel 6: Criterios SAT y Jurisprudencia — Normativos, SCJN, TFJA, TCC
+
+## Mapa normativo completo
+
+| Nivel | Clave | Nombre oficial | Tipo | Estado | Archivo |
+|---|---|---|---|---|---|
+| 1 | CPEUM | Constitución Política de los Estados Unidos Mexicanos | Constitución | ⏳ Pendiente | constitucion/cpeum.md |
+| 1 | CDIs | Convenios para Evitar la Doble Imposición (62+ países) | Tratado | ⏳ Pendiente | tratados-internacionales/convenios-doble-imposicion/ |
+| 1 | TIEAs | Acuerdos de Intercambio de Información Fiscal | Tratado | ⏳ Pendiente | tratados-internacionales/acuerdos-intercambio-informacion/ |
+| 1 | BEPS | Acciones BEPS-OCDE adoptadas por México | Acuerdo int. | ⏳ Pendiente | tratados-internacionales/beps-ocde/ |
+| 2 | CFF | Código Fiscal de la Federación | Ley federal | ⏳ Pendiente | leyes-federales/codigo-fiscal-de-la-federacion/cff.md |
+| 2 | LISR | Ley del Impuesto sobre la Renta | Ley federal | ⏳ Pendiente | leyes-federales/ley-del-isr/lisr.md |
+| 2 | LIVA | Ley del Impuesto al Valor Agregado | Ley federal | ⏳ Pendiente | leyes-federales/ley-del-iva/liva.md |
+| 2 | LIEPS | Ley del Impuesto Especial sobre Producción y Servicios | Ley federal | ⏳ Pendiente | leyes-federales/ley-del-ieps/lieps.md |
+| 2 | LA | Ley Aduanera | Ley federal | ⏳ Pendiente | leyes-federales/ley-aduanera/ley-aduanera.md |
+| 2 | LIF-2025 | Ley de Ingresos de la Federación 2025 | Ley federal | ⏳ Pendiente | leyes-federales/ley-de-ingresos-de-la-federacion/lif-2025.md |
+| 2 | LFD | Ley Federal de Derechos | Ley federal | ⏳ Pendiente | leyes-federales/ley-federal-de-derechos/lfd.md |
+| 2 | LCF | Ley de Coordinación Fiscal | Ley federal | ⏳ Pendiente | leyes-federales/ley-de-coordinacion-fiscal/lcf.md |
+| 2 | LCE | Ley de Comercio Exterior | Ley federal | ⏳ Pendiente | leyes-federales/ley-de-comercio-exterior/lce.md |
+| 2 | LSS | Ley del Seguro Social | Ley federal | ⏳ Pendiente | leyes-federales/ley-del-seguro-social/lss.md |
+| 2 | LINFONAVIT | Ley del INFONAVIT | Ley federal | ⏳ Pendiente | leyes-federales/ley-del-infonavit/linfonavit.md |
+| 2 | LISSSTE | Ley del ISSSTE | Ley federal | ⏳ Pendiente | leyes-federales/ley-del-issste/lissste.md |
+| 2 | LGSM | Ley General de Sociedades Mercantiles | Ley federal | ⏳ Pendiente | leyes-federales/ley-general-de-sociedades-mercantiles/lgsm.md |
+| 2 | LMV | Ley del Mercado de Valores | Ley federal | ⏳ Pendiente | leyes-federales/ley-del-mercado-de-valores/lmv.md |
+| 2 | LGTOC | Ley General de Títulos y Operaciones de Crédito | Ley federal | ⏳ Pendiente | leyes-federales/ley-general-titulos-operaciones-credito/lgtoc.md |
+| 2 | LSAR | Ley de los Sistemas de Ahorro para el Retiro | Ley federal | ⏳ Pendiente | leyes-federales/ley-de-los-sistemas-de-ahorro-para-el-retiro/lsar.md |
+| 2 | LFPIORPI | Ley Federal para la Prevención e Identificación de Operaciones con Recursos de Procedencia Ilícita | Ley federal | ⏳ Pendiente | leyes-federales/ley-antilavado-lfpiorpi/lfpiorpi.md |
+| 2 | LFDC | Ley Federal de los Derechos del Contribuyente | Ley federal | ⏳ Pendiente | leyes-federales/ley-federal-derechos-del-contribuyente/lfdc.md |
+| 2 | LFPCA | Ley Federal de Procedimiento Contencioso Administrativo | Ley federal | ⏳ Pendiente | leyes-federales/ley-federal-procedimiento-contencioso-administrativo/lfpca.md |
+| 3 | RCFF | Reglamento del CFF | Reglamento | ⏳ Pendiente | reglamentos/reglamento-cff/rcff.md |
+| 3 | RISR | Reglamento de la LISR | Reglamento | ⏳ Pendiente | reglamentos/reglamento-isr/risr.md |
+| 3 | RIVA | Reglamento de la LIVA | Reglamento | ⏳ Pendiente | reglamentos/reglamento-iva/riva.md |
+| 3 | RIEPS | Reglamento de la LIEPS | Reglamento | ⏳ Pendiente | reglamentos/reglamento-ieps/rieps.md |
+| 3 | RLA | Reglamento de la Ley Aduanera | Reglamento | ⏳ Pendiente | reglamentos/reglamento-ley-aduanera/rla.md |
+| 3 | RLSS | Reglamento de la Ley del Seguro Social | Reglamento | ⏳ Pendiente | reglamentos/reglamento-lss/rlss.md |
+| 4 | RMF-2025 | Resolución Miscelánea Fiscal 2025 | RMF | ⏳ Pendiente | resolucion-miscelanea-fiscal/2025/rmf-2025.md |
+| 4 | RMF-2024 | Resolución Miscelánea Fiscal 2024 | RMF | ⏳ Pendiente | resolucion-miscelanea-fiscal/2024/rmf-2024.md |
+| 5 | Criterios SAT | Criterios normativos, no vinculativos e internos del SAT | Criterio | ⏳ Pendiente | criterios-sat/ |
+| 6 | Jurisprudencia | SCJN, TFJA, TCC — materia fiscal | Jurisprudencia | ⏳ Pendiente | jurisprudencia/ |
+
+## Convención de commits
+
+- feat: publicación inicial de una ley
+- reform: actualización por reforma DOF (indicar fecha DOF y artículos afectados)
+- fix: corrección de formato o error de transcripción
+- docs: cambios al README u otros archivos de documentación
+- chore: mantenimiento del repositorio
+
+## Convención de nombres de rama
+
+- main: siempre estable, solo leyes verificadas
+- feat/[clave-ley]: para carga de una ley nueva
+- reform/[clave-ley]-[fecha-dof]: para reformas
+
+## Cómo contribuir
+
+Consulta `CONTRIBUTING.md` (próximamente) para lineamientos de colaboración.
+
+## Licencia
+
+MIT — con nota aclaratoria: el contenido normativo es de dominio público (DOF/Cámara de Diputados). El código de procesamiento y estructura es MIT.
