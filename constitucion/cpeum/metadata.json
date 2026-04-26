@@ -3,6 +3,16 @@
   "abreviatura": "CPEUM",
   "tipo": "Constitución",
   "pais": "México",
-  "fuente": "DOF",
-  "ultima_reforma": "YYYY-MM-DD"
+  "idioma": "es-MX",
+  "version_documento": "1.0",
+  "estado_documento": "vigente",
+  "fecha_version": "2026-04-26",
+  "fecha_publicacion_original": "1917-02-05",
+  "ultima_reforma": "2026-04-10",
+  "fuente": "Diario Oficial de la Federación (DOF)",
+  "fuente_compilacion": "Cámara de Diputados del H. Congreso de la Unión",
+  "fuente_url": "https://www.diputados.gob.mx/LeyesBiblio/pdf/CPEUM.pdf",
+  "documento_anterior": "constitucion/cpeum/versions/constitucion-politica-de-los-estados-unidos-mexicanos-v0.md",
+  "documento_activo": "constitucion/cpeum/constitucion-politica-de-los-estados-unidos-mexicanos.md",
+  "notas": "v1.0 es el primer documento base para reemplazo continuo dentro del repositorio."
 }
