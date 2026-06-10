@@ -1,3 +1,14 @@
+---
+nombre_oficial: "Ley del Impuesto sobre la Renta"
+clave: "LISR"
+tipo: "ley-federal"
+jerarquia_nivel: 2
+ultima_reforma_dof: "pendiente"
+url_fuente_oficial: "https://www.dof.gob.mx/"
+estatus: "vigente"
+contenido_cargado: false
+---
+
 # Ley del Impuesto sobre la Renta
 
 ## Metadata

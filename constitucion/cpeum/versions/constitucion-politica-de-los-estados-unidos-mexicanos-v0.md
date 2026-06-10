@@ -5,6 +5,10 @@ ultima_reforma: YYYY-MM-DD
 fuente: DOF
 tipo: Constitución
 pais: México
+nombre_oficial: "Constitución Política de los Estados Unidos Mexicanos"
+clave: "CPEUM"
+jerarquia_nivel: 1
+contenido_cargado: false
 ---
 
 # Constitución Política de los Estados Unidos Mexicanos
