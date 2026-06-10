@@ -1,3 +1,14 @@
+---
+nombre_oficial: "Código Fiscal de la Federación"
+clave: "CFF"
+tipo: "ley-federal"
+jerarquia_nivel: 2
+ultima_reforma_dof: "pendiente"
+url_fuente_oficial: "https://www.dof.gob.mx/"
+estatus: "vigente"
+contenido_cargado: false
+---
+
 # Código Fiscal de la Federación
 
 ## Metadata

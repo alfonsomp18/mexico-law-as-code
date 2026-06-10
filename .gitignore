@@ -1,0 +1,19 @@
+# Python caches and virtual environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Local environment and secrets
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local ingestion/download artifacts
+*.pdf
+*.tmp
+.DS_Store
